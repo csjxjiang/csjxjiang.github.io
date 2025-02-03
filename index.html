@@ -1,6 +1,89 @@
 <meta name="description" content="Jiaxin Jiang&#39;s home page">
 <link rel="stylesheet" href="jemdoc.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <title>Jiaxin Jiang's Homepage @ National University of Singapore</title>
+
+<style>
+    .wechat-container {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+    
+    .wechat-qr {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;  /* 二维码和文字之间的间距 */
+        padding: 10px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+    
+    .wechat-qr img {
+        width: 150px;  /* 调整这个值以匹配您的二维码实际大小 */
+        height: 150px;  /* 调整这个值以匹配您的二维码实际大小 */
+        display: block;
+    }
+    
+    .wechat-container:hover .wechat-qr {
+        display: block;
+    }
+
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 300px;
+        border-radius: 8px;
+        position: relative;
+        text-align: center;
+    }
+
+    .modal-content img {
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .close {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover {
+        color: black;
+    }
+
+    .wechat-link {
+        cursor: pointer;
+    }
+</style>
 
 <body>
 <div id="layout-content" style="margin-top:25px">
@@ -18,9 +101,9 @@
                     National University of Singapore<br>
                     Computing 1, Computing Drive, Singapore 117417<br>
                     <br>
-                    Email: jxjiang &alpha;t nus d&omicron;t edu d&omicron;t sg
+                    Email <a href="mailto:jxjiang@nus.edu.sg"><i class="fas fa-envelope"></i></a>: jxjiang &alpha;t nus d&omicron;t edu d&omicron;t sg 
                 </p>
-                 <a href="jiangjiaxin_cv_en.pdf">CV</a> &bull; <a href="https://scholar.google.com.sg/citations?user=IJxaU-4AAAAJ&hl=zh-CN">Google Scholar</a> &bull; <a href="https://dblp.org/pid/90/8494">DBLP</a> &bull; <a href="https://orcid.org/0000-0001-8748-3225"><img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16" />ORCID</a>
+                 <a href="jiangjiaxin_cv_en.pdf">CV</a> &bull; <a href="https://scholar.google.com.sg/citations?user=IJxaU-4AAAAJ&hl=zh-CN">Google Scholar</a> &bull; <a href="https://dblp.org/pid/90/8494">DBLP</a> &bull; <a href="https://orcid.org/0000-0001-8748-3225"><img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16" />ORCID</a>  &bull; <a href="https://www.linkedin.com/in/jiaxin-jiang-a084b8258/?originalSubdomain=sg"><i class="fab fa-linkedin"></i>LinkedIn</a> &bull; <span class="wechat-container"><i class="fab fa-weixin"></i> WeChat<div class="wechat-qr"><img src="qr.jpg" alt="WeChat QR Code"></div></span>
             </td>
             <td>
                 <img src="./jjx.jpeg" border="0" width="150">
@@ -302,10 +385,45 @@ and Bohan Zhang. <br>
     <a href="https://clustrmaps.com/site/19wyn"  title="Visit tracker"><img src="//www.clustrmaps.com/map_v2.png?d=BkleEezNSx_mKhvMSw0OJkEVN-31ZFKYACa0j1Ywtgw&cl=ffffff" /></a>
 </div>
 
+
 <div id="footer">
     <div id="footer-text">
         <a href="https://www.comp.nus.edu.sg/">School of Computing</a>, <a href="https://www.nus.edu.sg/">National University of Singapore</a>
     </div>
 </div>
+
+<!-- Add the modal HTML at the end of the body -->
+<div id="wechatModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>WeChat QR Code</h3>
+        <img src="qr.jpg" alt="WeChat QR Code">
+    </div>
+</div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("wechatModal");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the WeChat link, open the modal 
+    document.querySelector(".wechat-link").onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 </body></html>
